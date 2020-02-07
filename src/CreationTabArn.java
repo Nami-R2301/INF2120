@@ -2,39 +2,36 @@ import java.util.ArrayList;
 
 public class CreationTabArn {
 
-    protected String arnA;
-    protected String arnB;
     protected ArrayList<String> tabArnA = new ArrayList<>();
     protected ArrayList<String> tabArnB = new ArrayList<>();
     protected int distanceMax;
+    protected int deviationMinTotal;
+    protected double similarite;
 
     private static boolean validationMajusculeArn( String arnA, String arnB) {
-        return false;
+        return arnA.matches("^([ACGU])$") && arnB.matches("^([ACGU])$");
     }
 
     private static boolean validationContenuArn( String arnA, String arnB ) {
-        return !arnA.isEmpty() && !arnB.isEmpty();
+        return !arnA.isEmpty() && !arnB.isEmpty() && arnA.length() % 2 == 0 && arnB.length() % 2 == 0;
     }
 
     public CreationTabArn(String arnA, String arnB, int distanceMax) {
-        if (!arnA.isEmpty() && !arnB.isEmpty()) {
-            for (int i = 0; i < arnA.length(); i +=3) {
-                tabArnA.add(arnA.substring( i, i + 3));
+        validationContenuArn(arnA, arnB);
+        validationMajusculeArn(arnA, arnB);
+        if (validationContenuArn(arnA, arnB) && validationMajusculeArn(arnA, arnB)) {
+            for (int i = 0; i < (Math.max(arnA.length(), arnB.length())); i += 3) {
+                tabArnA.add(arnA.substring(i, i + 3));
+                tabArnB.add(arnB.substring(i, i + 3));
             }
-            for (int i = 0; i < arnB.length(); i+=3) {
-                tabArnB.add(arnB.substring( i, i + 3));
-            }
-            if (distanceMax > 0) {
-                this.distanceMax = distanceMax;
-            }
+            this.distanceMax = Math.abs(distanceMax);
         }
     }
 
     @Override
     public String toString() {
         return
-                "DeviationA ='" + tabArnA + '\'' +
-                ", DeviationB ='" + tabArnB + '\'' +
-                ", max = " + distanceMax;
+                ", max = " + distanceMax + "\n\n" +
+                ", Similarite = " + similarite;
     }
 }
