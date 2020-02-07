@@ -40,10 +40,10 @@ public class SommeDeviation extends CreationTabArn {
             return chaineArray;
         }
 
-//    public static ArrayList<String> conversionAbbArn(ArrayList chaineArray) {
-//        ArrayList<String> arrayAbbArn = new ArrayList<>();
-//
-//    }
+           public static ArrayList<String> conversionAbbArn(ArrayList<String> chaineArray) {
+               ArrayList<String> arrayAbbArn = new ArrayList<>();
+                return chaineArray;
+           }
 
         public static int calculDistance(ArrayList<String> firstArray, ArrayList<String> secondArray,
                                          int distanceMaximale) {
