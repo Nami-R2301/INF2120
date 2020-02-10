@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.zip.CheckedOutputStream;
 
 /**
  * Calcule la somme de déviation minimale en commençant par tranformer les tableaux d'arns pris en attirbuts
@@ -11,10 +12,27 @@ import java.util.Collections;
  *
  */
 
+enum Codons {
+    Ale ("AAA"),
+    AAC, AAB,
+    ;
+    public String codons1;
+
+    Codons(String codons1) {
+        this.codons1 = codons1;
+    }
+}
+
 public class Similarite extends CreationTabArn {
 
     public void tranformationEnAbb(ArrayList<String> tabArnA, ArrayList<String> tabArnB) {
-        ArrayList<String> arnA = new ArrayList<>();
+        for (int i = 0; i < Math.max(tabArnA.size(), tabArnB.size()); ++i) {
+            Codons tabA = Enum.valueOf(Codons<String>, "AAA");
+            switch (tabArnA.get(i)) {
+                case AAA:
+                    tabArnA.set( i, "Ale");
+            }
+        }
     }
 
     public static int calculDistance(ArrayList<String> firstArray, ArrayList<String> secondArray,
@@ -36,9 +54,8 @@ public class Similarite extends CreationTabArn {
     }
 
     public static int calculM(int sommeDistance, int n, int m, int d) {
-        int sommeNumerateur = sommeDistance;
         int sommeDenominateur = (n + m) * d;
-        return (sommeNumerateur / sommeDenominateur);
+        return (sommeDistance / sommeDenominateur);
     }
 
 

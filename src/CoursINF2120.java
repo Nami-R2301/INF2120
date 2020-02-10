@@ -72,4 +72,23 @@ public class CoursINF2120 {
      * }
      *
      */
+
+    /**
+     * Classe Anonyme:
+     *
+     *  Instruction:
+     *      if() + _  <-- symbole apres la parenthese = instruction.
+     *      while() + _ = instruction.
+     *      do() + _ = instruction.
+     *      break = instruction
+     *      continue = instruction.
+     *      return = instruction
+     *      try/catch = instruction. (Y compris dans le try/catch)
+     *      switch/case(s) = instruction
+     *      variable = --> instruction
+     *
+     *  Expression:
+     *      Dans les parentheses.
+     *      arithmetique.
+     */
 }

@@ -9,7 +9,7 @@ public class CreationTabArn {
     protected double similarite;
 
     private static boolean validationMajusculeArn( String arnA, String arnB) {
-        return arnA.matches("^([ACGU])$") && arnB.matches("^([ACGU])$");
+        return arnA.matches("(^[ACGU]$)") && arnB.matches("(^[ACGU]$)");
     }
 
     private static boolean validationContenuArn( String arnA, String arnB ) {
