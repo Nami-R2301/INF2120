@@ -2,7 +2,7 @@
 public class Main {
     public static void main(String[] args) {
         try {
-            CreationTabArn s1 = new Similarite("ACGU", "ACGU", 3);
+            CreationTabArn s1 = new Similarite("AAAUUU", "ACAGCA", 0);
             System.out.println(s1);
         }catch (ArrayIndexOutOfBoundsException e1) {
             System.out.println("Une méthode dans la classe 'CréationTabArn' a échoué à cause d'un index" +

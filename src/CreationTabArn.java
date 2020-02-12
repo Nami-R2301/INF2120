@@ -9,22 +9,28 @@ public class CreationTabArn {
     protected double similarite;
 
     private static boolean validationMajusculeArn( String arnA, String arnB) {
-        return arnA.matches("(^[ACGU]$)") && arnB.matches("(^[ACGU]$)");
+        return arnA.matches("^([ACGU]+)$") && arnB.matches("^([ACGU]+)$");
     }
 
     private static boolean validationContenuArn( String arnA, String arnB ) {
-        return !arnA.isEmpty() && !arnB.isEmpty() && arnA.length() % 2 == 0 && arnB.length() % 2 == 0;
+        return !arnA.isEmpty() && !arnB.isEmpty() && arnA.length() % 3 == 0 && arnB.length() % 3 == 0;
     }
 
     public CreationTabArn(String arnA, String arnB, int distanceMax) {
         validationContenuArn(arnA, arnB);
         validationMajusculeArn(arnA, arnB);
         if (validationContenuArn(arnA, arnB) && validationMajusculeArn(arnA, arnB)) {
-            for (int i = 0; i < (Math.max(arnA.length(), arnB.length())); i += 3) {
+            for (int i = 0; i < arnA.length(); i += 3) {
                 tabArnA.add(arnA.substring(i, i + 3));
+            }
+            for (int i = 0; i < arnB.length(); i+=3 ) {
                 tabArnB.add(arnB.substring(i, i + 3));
             }
-            this.distanceMax = Math.abs(distanceMax);
+            if (distanceMax == 0) {
+                this.distanceMax = 1;
+            } else {
+                this.distanceMax = Math.abs(distanceMax);
+            }
         }
     }
 

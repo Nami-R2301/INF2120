@@ -1,6 +1,9 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.zip.CheckedOutputStream;
+import javax.swing.*;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.stream.Stream;
+
+import static java.lang.String.valueOf;
 
 /**
  * Calcule la somme de déviation minimale en commençant par tranformer les tableaux d'arns pris en attirbuts
@@ -12,30 +15,29 @@ import java.util.zip.CheckedOutputStream;
  *
  */
 
-enum Codons {
-    Ale ("AAA"),
-    AAC, AAB,
-    ;
-    public String codons1;
-
-    Codons(String codons1) {
-        this.codons1 = codons1;
-    }
-}
-
 public class Similarite extends CreationTabArn {
 
-    public void tranformationEnAbb(ArrayList<String> tabArnA, ArrayList<String> tabArnB) {
-        for (int i = 0; i < Math.max(tabArnA.size(), tabArnB.size()); ++i) {
-            Codons tabA = Enum.valueOf(Codons<String>, "AAA");
-            switch (tabArnA.get(i)) {
-                case AAA:
-                    tabArnA.set( i, "Ale");
-            }
+
+    public ArrayList<String> conversionEnum(ArrayList<String> tabArn){
+        ArrayList<String> tabTypeEnum = new ArrayList<>();
+        for (int i = 0; i < Codons.values().length; i++) {
+            tabTypeEnum.add(Codons.values()[i].toString());
         }
+            for (int j = 0; j < tabArn.size(); j++ ) {
+                int emplacement = tabTypeEnum.indexOf(tabArn.get(j));
+                if (tabTypeEnum.get(emplacement) != null) {
+                    tabArn.set(j, tabTypeEnum.get(emplacement));
+                }
+            }
+        return tabArn;
     }
 
-    public static int calculDistance(ArrayList<String> firstArray, ArrayList<String> secondArray,
+    public void tranformationEnAbb(ArrayList<String> tabArnA, ArrayList<String> tabArnB) {
+        this.tabArnA = conversionEnum(tabArnA);
+        this.tabArnB = conversionEnum(tabArnB);
+    }
+
+    public int calculDistance(ArrayList<String> firstArray, ArrayList<String> secondArray,
                                      int distanceMaximale) {
         int sommeDistance = 0;
 
@@ -53,13 +55,13 @@ public class Similarite extends CreationTabArn {
         return sommeDistance;
     }
 
-    public static int calculM(int sommeDistance, int n, int m, int d) {
+    public int calculM(int sommeDistance, int n, int m, int d) {
         int sommeDenominateur = (n + m) * d;
         return (sommeDistance / sommeDenominateur);
     }
 
 
-    public static double exponentielCalculM(double fonctionM) {
+    public double exponentielCalculM(double fonctionM) {
         return Math.exp(-6 * fonctionM * fonctionM);
     }
 
