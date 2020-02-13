@@ -1,6 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Cette classe sert à démarrer le programme e faisant des vérifications sur les entrées de l'utilisateur
+ * pour valider ceux-ci avant la construction de la classe mère (CreationTabArn).
+ *
+ */
+
 public class Main {
 
     public static String ARN_UN = "\nVeuillez entrez une votre première chaine d'ARN ci-dessous, " +
@@ -18,28 +24,28 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try {
+        try {                           //Solution envers les exceptions possibles.
 
             System.out.println(ARN_UN);
-            Scanner arn1 = new Scanner(System.in);
+            Scanner arn1 = new Scanner(System.in);  //ARN #1
             String arnA = arn1.next().trim();
-            if (!CreationTabArn.validationMultipleTroisArn(arnA) || !CreationTabArn.validationMajusculeArn(arnA)) {
+            if (!CreationTabArn.validationMultipleTroisArn(arnA) || !CreationTabArn.validationContenuArn(arnA)) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-1);
             }
 
             System.out.println(ARN_DEUX);
-            Scanner arn2 = new Scanner(System.in);
+            Scanner arn2 = new Scanner(System.in);  //ARN #2
             String arnB = arn2.next().trim();
-            if (!CreationTabArn.validationMultipleTroisArn(arnB) || !CreationTabArn.validationMajusculeArn(arnB)) {
+            if (!CreationTabArn.validationMultipleTroisArn(arnB) || !CreationTabArn.validationContenuArn(arnB)) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-2);
             }
 
             System.out.println(DISTANCEMAX);
-            Scanner d = new Scanner(System.in);
+            Scanner d = new Scanner(System.in);     //Distance maximale
             int distanceMax = d.nextInt();
-            d.close();
+            d.close();                          //Fermeture du canal de lecture
             if (distanceMax <= 0) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-3);
@@ -50,21 +56,15 @@ public class Main {
 
 
         }catch (ArrayIndexOutOfBoundsException e1) {
-
             System.err.println("Une méthode dans la classe 'CréationTabArn' a échoué à cause d'un index" +
-
                     " hors bornes !");
 
         }catch (NullPointerException e2) {
-
             System.err.println("Une méthode dans la classe 'CréationTabArn' a échoué à cause d'un appel" +
-
                     " d'une valeur nulle !");
 
         }catch (NumberFormatException e3) {
-
             System.err.println("Une méthode de la classe 'Similarité' a échoué à cause d'un appel" +
-
                     " de mauvais type (Ex: String lors d'un appel double ou int et vise-versa) !");
 
         }catch (InputMismatchException e5) {

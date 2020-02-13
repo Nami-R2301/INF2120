@@ -3,16 +3,11 @@ import java.util.*;
 
 /**
  * Calcule la somme de déviation minimale en commençant par tranformer les tableaux d'arns pris en attirbuts
-
  * de la classe mère "CreationTabArn" en tableaux d'abbréviations. Ensuite, en utilisant l'attribut "DistanceMax",
-
- * la méthode de classe "correspondanceAbb" calcule la difference des correspondances entre les deux tableaux reçu
-
- * en paramètre par la méthode "tranformationEnAbb". Une fois terminer, le constructeur fait appel aux méthodes
-
- * "calculDistance pour trouver la somme de ceux-ci. Finalement, le constructeur appel les méthodes "calculM" et
-
- * "exponentielCalculM" pour trouver la similarité des deux ARN.
+ * la méthode de classe "conversionEnum" calcule la difference des correspondances entre les valeurs enums et les
+ * éléments du tableau en paramètre dans la méthode "TransformationEnAbb". Une fois terminer, le constructeur fait appel
+ * à la méthode "calculDistance" deux fois pour trouver la somme des deux déviations minmales. Finalement, le
+ * constructeur appel les méthodes "calculM" et "exponentielCalculM" pour trouver la similarité des deux ARN.
 
  */
 
@@ -31,7 +26,6 @@ public class Similarite extends CreationTabArn {
     public void tranformationEnAbb(ArrayList<String> tabArnA, ArrayList<String> tabArnB) {
 
         this.tabArnA = conversionEnum(tabArnA);
-
         this.tabArnB = conversionEnum(tabArnB);
     }
 
@@ -68,7 +62,6 @@ public class Similarite extends CreationTabArn {
     }
 
     public double exponentielCalculM(double fonctionM) {
-
         return Math.exp(-6 * fonctionM * fonctionM);
 
     }

@@ -1,4 +1,8 @@
-
+/**
+ * Cette classe d'énumération sert à instancier plusieurs codons, ainsi que leurs correspondance en abbréviation
+ * pour pouvoir appelé ceux-ci plus tard et les comparés tous avec les codons dans les tableaux en attributs (
+ * tabArnA et tabArnB) sans avoir a utiliser des switch/cases.
+ */
 public enum Codons {
 
     GCU ("Ala"), GCC ("Ala"), GCA ("Ala"), GCG ("Ala"),
@@ -35,7 +39,7 @@ public enum Codons {
 
     ;
 
-    public String codons1;
+    public String codons1;      //Abbréviation de chaque objet Codons.
 
 
     Codons(String codons1) {
@@ -43,6 +47,11 @@ public enum Codons {
         this.codons1 = codons1;
     }
 
+    /**
+     * Cette méthode retourne  l'abbréviation d'un objet (Codons) passé en paramètre.
+     * @param codon Le codon contenant l'attibut 'codons1'.
+     * @return L'abbréviation en String.
+     */
     public static String getabbCodons(Codons codon) { ;
         return codon.codons1;
     }
