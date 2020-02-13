@@ -1,43 +1,49 @@
 import java.util.ArrayList;
 
+
+
 public class CreationTabArn {
 
     protected ArrayList<String> tabArnA = new ArrayList<>();
+
     protected ArrayList<String> tabArnB = new ArrayList<>();
+
     protected int distanceMax;
-    protected int deviationMinTotal;
+
+    protected double deviationMinTotalUn;
+
+    protected double deviationMinTotalDos;
+
     protected double similarite;
 
-    private static boolean validationMajusculeArn( String arnA, String arnB) {
-        return arnA.matches("^([ACGU]+)$") && arnB.matches("^([ACGU]+)$");
+    public static boolean validationMajusculeArn( String arnA) {
+
+        return arnA.matches("^([ACGU]+)$");
     }
 
-    private static boolean validationContenuArn( String arnA, String arnB ) {
-        return !arnA.isEmpty() && !arnB.isEmpty() && arnA.length() % 3 == 0 && arnB.length() % 3 == 0;
+    public static boolean validationMultipleTroisArn( String arnA) {
+
+        return arnA.length() % 3 == 0 ;
     }
 
     public CreationTabArn(String arnA, String arnB, int distanceMax) {
-        validationContenuArn(arnA, arnB);
-        validationMajusculeArn(arnA, arnB);
-        if (validationContenuArn(arnA, arnB) && validationMajusculeArn(arnA, arnB)) {
-            for (int i = 0; i < arnA.length(); i += 3) {
-                tabArnA.add(arnA.substring(i, i + 3));
-            }
-            for (int i = 0; i < arnB.length(); i+=3 ) {
-                tabArnB.add(arnB.substring(i, i + 3));
-            }
-            if (distanceMax == 0) {
-                this.distanceMax = 1;
-            } else {
-                this.distanceMax = Math.abs(distanceMax);
-            }
+
+        for (int i = 0; i < arnA.length(); i += 3) {
+            tabArnA.add(arnA.substring(i, i + 3));
         }
+        for (int i = 0; i < arnB.length(); i+=3 ) {
+            tabArnB.add(arnB.substring(i, i + 3));
+        }
+        this.distanceMax = distanceMax;
     }
 
     @Override
+
     public String toString() {
+
         return
-                ", max = " + distanceMax + "\n\n" +
-                ", Similarite = " + similarite;
+                "\nSimilarite = " + similarite;
+
     }
+
 }
