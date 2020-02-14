@@ -13,21 +13,15 @@ import java.util.*;
 
 public class Similarite extends CreationTabArn {
 
-    public ArrayList<String> conversionEnum(ArrayList<String> tabArn){
+    public void transformationEnAbb(ArrayList<String> tabArn){
 
         for ( int j = 0; j < tabArn.size(); j++ ) {
             if ( tabArn.get(j).equals(Codons.valueOf(tabArn.get(j)).toString())) {
                 tabArn.set(j, (Codons.getabbCodons(Codons.valueOf(tabArn.get(j) ) ) ) );
             }
         }
-        return tabArn;
     }
 
-    public void tranformationEnAbb(ArrayList<String> tabArnA, ArrayList<String> tabArnB) {
-
-        this.tabArnA = conversionEnum(tabArnA);
-        this.tabArnB = conversionEnum(tabArnB);
-    }
 
     public int calculDistance(ArrayList<String> firstArray, ArrayList<String> secondArray,
                               int distanceMaximale) {
@@ -70,7 +64,8 @@ public class Similarite extends CreationTabArn {
 
         super(arnA, arnB, distanceMax);
 
-        tranformationEnAbb(tabArnA, tabArnB);
+        transformationEnAbb(tabArnA);
+        transformationEnAbb(tabArnB);
 
         deviationMinTotalUn = calculDistance(tabArnA, tabArnB, this.distanceMax);
 
