@@ -11,18 +11,18 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static String ARN_UN = "\nVeuillez entrez une votre première chaine d'ARN ci-dessous, " +
+    public static String ARN_UN = "\nVeuillez entrez votre première chaine d'ARN ci-dessous, " +
             "suivi de la touche 'ENTER'... ";
 
-    public static String ARN_DEUX = "\nVeuillez entrez une votre deuxième chaine d'ARN ci-dessous, " +
+    public static String ARN_DEUX = "\nVeuillez entrez votre deuxième chaine d'ARN ci-dessous, " +
             "suivi de la touche 'ENTER'... ";
 
-    public static String DISTANCEMAX = "\nVeuillez entrez une la distance maximale désiré.\n" +
+    public static String DISTANCEMAX = "\nVeuillez entrez la distance maximale désiré.\n" +
             "(Attention, elle doit être un entier positif!)";
 
     public static String MSG_ERREUR = "La chaine de caractères est invalide!\nVeuillez vous assurez que " +
-            "sa longueur soit un multiple de 3\net qu'elle ne contienne que des majuscules" +
-            " comprises entre 'A-C-G-U'!";
+            "sa longueur soit de multiple de 3\net qu'elle ne contienne que des majuscules" +
+            " comprises entre 'A-C-G-U'!" + "\nDe plus, elle ne doit pas contenir des symboles et/ou des espaces!";
 
     public static void main(String[] args) {
 
@@ -30,7 +30,7 @@ public class Main {
 
             System.out.println(ARN_UN);
             Scanner arn1 = new Scanner(System.in);  //ARN #1
-            String arnA = arn1.next().trim();
+            String arnA = arn1.nextLine().trim();
             if (CreationTabArn.validationMultipleTroisArn(arnA) || CreationTabArn.validationContenuArn(arnA)) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-1);
@@ -38,7 +38,7 @@ public class Main {
 
             System.out.println(ARN_DEUX);
             Scanner arn2 = new Scanner(System.in);  //ARN #2
-            String arnB = arn2.next().trim();
+            String arnB = arn2.nextLine().trim();
             if (CreationTabArn.validationMultipleTroisArn(arnB) || CreationTabArn.validationContenuArn(arnB)) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-2);

@@ -20,18 +20,20 @@ public class CreationTabArn {
 
     /**
      * Cette méthode constitut à valider le contenu des chaines de codons saisi par l'utilisateur pour quelle soient
-     * belle et bien constitué avec seulement les caractères A,C,G,U.
+     * belle et bien constitué avec seulement les caractères A,C,G,U et quelle ne contiennent pas d'espaces superflues.
      * @param arnA La chaine de caractère saisie par l'utilisateur.
-     * @return Un boolean qui détermine si la chaine est valide (True/False).
+     * @return Un boolean qui détermine si la chaine n'est pas valide. Autrement dit, si une des deux instruction
+     * retourne true, la chaine est considere comme invalide.
      */
     public static boolean validationContenuArn( String arnA) {
-        return !arnA.matches("^([ACGU]+)$");
+        return !arnA.matches("^([ACGU]+)$") || !arnA.matches("[^\\s]+");
     }
 
     /**
      * Cette méthode vérifie la validité des chaines passé en paramètre en vérifiant si elles sont de multiple de trois.
      * @param arnA Chaine de codons saisie par l'utilisateur.
-     * @return Un boolean qui défini la validité de la chaine (True/False).
+     * @return Un boolean qui défini l'invalidité de la chaine. Si la méthode retourne true, la chaine de codons saisi
+     * n'est pas de multiple de trois.
      */
     public static boolean validationMultipleTroisArn( String arnA) {
         return arnA.length() % 3 != 0;

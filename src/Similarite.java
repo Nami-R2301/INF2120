@@ -20,7 +20,7 @@ public class Similarite extends CreationTabArn {
     public void transformationEnAbb(ArrayList<String> tabArn){
 
         for ( int j = 0; j < tabArn.size(); j++ ) {
-            if ( tabArn.get(j).equals(Codons.valueOf(tabArn.get(j)).toString())) {
+            if ( tabArn.get(j).equals(Codons.valueOf(tabArn.get(j)).name())) {  //Si tabArn[j] = Codons.tabArn[j].name()
                 tabArn.set(j, (Codons.getabbCodons(Codons.valueOf(tabArn.get(j) ) ) ) );
             }
         }
