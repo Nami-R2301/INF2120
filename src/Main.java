@@ -2,9 +2,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Cette classe sert à démarrer le programme e faisant des vérifications sur les entrées de l'utilisateur
+ * Cette classe sert à démarrer le programme en faisant des vérifications sur les entrées de l'utilisateur
  * pour valider ceux-ci avant la construction de la classe mère (CreationTabArn).
- *
+ * @author Nami Reghbati REGN03079808
+ * @author Rafael Hernandez Garcia HERR14018808
+ * Date complété: 2020/02/13
  */
 
 public class Main {

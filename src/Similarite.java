@@ -12,7 +12,11 @@ import java.util.*;
  */
 
 public class Similarite extends CreationTabArn {
-
+    /**
+     * Verifie la correspondance des codons entre le tableau en attribut et les objets de la classe Codons.
+     * Une fois une correspondance trouvée, elle converti celle-ci en son abréviation respective.
+     * @param tabArn Le tableau passé en attribut contenant les codons.
+     */
     public void transformationEnAbb(ArrayList<String> tabArn){
 
         for ( int j = 0; j < tabArn.size(); j++ ) {
@@ -22,7 +26,13 @@ public class Similarite extends CreationTabArn {
         }
     }
 
-
+    /**
+     * Calcule la somme des distances minimales entre les deux tableaux d'abréviation(tabArnA et tabArnB).
+     * @param firstArray Tableau d'abréviation arnA ou arnB.
+     * @param secondArray Le deuxième tableau d'abréviation restant.
+     * @param distanceMaximale Distance maximale saisi par l'usager.
+     * @return La somme des distances minimales pour le tableau entré comme premier paramètre.
+     */
     public int calculDistance(ArrayList<String> firstArray, ArrayList<String> secondArray,
                               int distanceMaximale) {
         int distance = 0;
@@ -47,6 +57,15 @@ public class Similarite extends CreationTabArn {
 
     }
 
+    /**
+     * Calcule un ratio nécessaire pour l'algorithme de la métrique.
+     * @param distance1 Le résultat de la méthode calculDistance pour le premier ArrayList.
+     * @param distance2 Le résultat de la méthode calculDistance pour le deuxième ArrayList.
+     * @param n La taille du premier tableau des abréviations.
+     * @param m La taille du deuxième tableau des abréviations.
+     * @param d La distance maximale saisi par l'usager.
+     * @return Le ratio.
+     */
     public double calculM(double distance1, double distance2, int n, int m, int d) {
         double sommeNumerateur = (distance1 + distance2);
         int sommeDenominateur = (n + m) * d;
@@ -55,11 +74,24 @@ public class Similarite extends CreationTabArn {
 
     }
 
+    /**
+     * Calcule la valeur exponentielle de la multiplication entre fonctionM au carré et -6.
+     * @param fonctionM Le résultat de la méthode calculM.
+     * @return Le chiffre representant la similarité entre les deux ARN.
+     */
     public double exponentielCalculM(double fonctionM) {
         return Math.exp(-6 * fonctionM * fonctionM);
 
     }
 
+    /**
+     * Constructeur qui appelle la classe mère pour recevoir les ArrayList.
+     * Les quatre méthodes nécéssaires qui calculent la similarité entre les deux ARN sont ensuite appelées.
+     * Celles-ci sont exponentielCalculM, calculM, calculDistance et transformationEnAbb.
+     * @param arnA La première chaîne de Codons saisi par l'usager.
+     * @param arnB La deuxième chaîne de Codons saisi par l'usager.
+     * @param distanceMax La distance maximale saisi par l'usager.
+     */
     public Similarite(String arnA, String arnB, int distanceMax) {
 
         super(arnA, arnB, distanceMax);
