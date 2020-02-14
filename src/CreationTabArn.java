@@ -25,18 +25,24 @@ public class CreationTabArn {
      * @return Un boolean qui détermine si la chaine est valide (True/False).
      */
     public static boolean validationContenuArn( String arnA) {
-        return arnA.matches("^([ACGU]+)$");
+        return !arnA.matches("^([ACGU]+)$");
     }
 
     /**
-     *
-     * @param arnA
-     * @return
+     * Cette méthode vérifie la validité des chaines passé en paramètre en vérifiant si elles sont de multiple de trois.
+     * @param arnA Chaine de codons saisie par l'utilisateur.
+     * @return Un boolean qui défini la validité de la chaine (True/False).
      */
     public static boolean validationMultipleTroisArn( String arnA) {
-        return arnA.length() % 3 == 0 ;
+        return arnA.length() % 3 != 0;
     }
 
+    /**
+     * Constructeur qui construit les ArrayList de type String qui seront utilisé par les classe filles.
+     * @param arnA La première chaine de codons saisi par l'utilisateur.
+     * @param arnB La deuxième chaine de codons saisi par l'utilisateur.
+     * @param distanceMax La distance saisi par l'utilisateur.
+     */
     public CreationTabArn(String arnA, String arnB, int distanceMax) {
 
         for (int i = 0; i < arnA.length(); i += 3) {

@@ -29,7 +29,7 @@ public class Main {
             System.out.println(ARN_UN);
             Scanner arn1 = new Scanner(System.in);  //ARN #1
             String arnA = arn1.next().trim();
-            if (!CreationTabArn.validationMultipleTroisArn(arnA) || !CreationTabArn.validationContenuArn(arnA)) {
+            if (CreationTabArn.validationMultipleTroisArn(arnA) || CreationTabArn.validationContenuArn(arnA)) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-1);
             }
@@ -37,7 +37,7 @@ public class Main {
             System.out.println(ARN_DEUX);
             Scanner arn2 = new Scanner(System.in);  //ARN #2
             String arnB = arn2.next().trim();
-            if (!CreationTabArn.validationMultipleTroisArn(arnB) || !CreationTabArn.validationContenuArn(arnB)) {
+            if (CreationTabArn.validationMultipleTroisArn(arnB) || CreationTabArn.validationContenuArn(arnB)) {
                 System.err.println(MSG_ERREUR);
                 System.exit(-2);
             }
@@ -51,23 +51,12 @@ public class Main {
                 System.exit(-3);
             }
 
-            CreationTabArn s1 = new Similarite(arnA, arnB, distanceMax);
-            System.out.println(s1);
+            CreationTabArn s1 = new Similarite(arnA, arnB, distanceMax);    //Contructeur principale qui déroule tout
 
+            System.out.println(s1);     //Affichage du résultat
 
-        }catch (ArrayIndexOutOfBoundsException e1) {
-            System.err.println("Une méthode dans la classe 'CréationTabArn' a échoué à cause d'un index" +
-                    " hors bornes !");
+        }catch (InputMismatchException e5) {    //Si Scanner lance une exception lors de la saisi de l'utilisateur.
 
-        }catch (NullPointerException e2) {
-            System.err.println("Une méthode dans la classe 'CréationTabArn' a échoué à cause d'un appel" +
-                    " d'une valeur nulle !");
-
-        }catch (NumberFormatException e3) {
-            System.err.println("Une méthode de la classe 'Similarité' a échoué à cause d'un appel" +
-                    " de mauvais type (Ex: String lors d'un appel double ou int et vise-versa) !");
-
-        }catch (InputMismatchException e5) {
             System.err.println("\nErreur! La distance saisie n'est pas un entier positif!");
         }
     }
